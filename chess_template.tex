@@ -1,0 +1,65 @@
+\documentclass[a4paper,12pt]{book}
+
+\title{Chess Latex Template}
+\author{HenryNVP}
+
+\usepackage[inner=2.5cm,outer=2.5cm,top=2.5cm,bottom=2.5cm,headheight=7mm,headsep=1mm,heightrounded]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+% Chess package
+\usepackage{chessboard}
+\usepackage{xskak}
+
+\begin{document}
+	
+\newcommand\textboard[2][]{
+	\noindent
+	\begin{minipage}[t]{0.49\textwidth}
+		\centering\chessboard[setfen=#2]\par
+		\raggedright#1\strut
+	\end{minipage}
+	\hfill\ignorespaces}
+
+\newcounter{diagrams}
+\newcommand\printcounts{
+	\normalsize\refstepcounter{diagrams}\thediagrams}
+	
+\newcommand\tacticboard[2][]{
+	\noindent
+	\begin{minipage}[t]{0.49\textwidth}
+		\centering\printcounts\chessboard[setfen=#2]\par
+		\Large#1\strut
+	\end{minipage}
+	\hfill\ignorespaces}
+	
+\setchessboard{showmover=true, moversize=24px, moverstyle=circle}
+	
+% --------Theory--------
+\chapter*{Double attack}
+
+The double attack happens when a single move by a player creates two simultaneous threats against their opponent.
+
+\newchessgame
+\textboard[\mainline{1.Ne5} attacks two pieces with higher values ]{r5k1/p2q1ppp/2r5/2np4/2N5/5Q1P/PP3PP1/R4RK1 w - - 0 1}
+\newchessgame
+\textboard[\mainline{1.Qc8+ Kh7 2.Qxg4}]{6k1/5pp1/7p/3q4/6r1/2Q5/5PPP/5RK1 w - - 0 1}
+\newchessgame
+\textboard[\mainline{1.Qc5} threatens checkmate and attacks unprotected pieces]{7k/pb4np/p5p1/6b1/Pr3N2/4Q1P1/1P5P/5BKR w K - 0 1}
+
+% -------Exercise-------
+\lhead{\Large\bfseries Double Attack Exercises}
+
+\tacticboard[\dotfill]{3r2k1/p1q2pp1/1p5p/2p2Q2/8/1P4PP/P4PB1/2B3K1 b - - 0 1}
+\tacticboard[\dotfill]{2r5/p5kp/1p3pp1/8/2B5/2P3Pn/1P1R1P1P/7K w - - 0 1}
+\vspace{\fill}
+\tacticboard[\dotfill]{2k1r3/pp3ppp/2pp4/Q1b5/3n1B2/P7/1PP2PPP/2K5 b - - 0 1}
+\tacticboard[\dotfill]{1r3k2/bp5p/p4pp1/4p3/2P1P2n/1P3P1P/P2Q2P1/7K w - - 0 1}
+\vspace{\fill}
+\tacticboard[\dotfill]{5b2/1bp2ppk/p5qp/3P4/2P5/5P2/1B1NQ1PP/6K1 b - - 0 1}
+\tacticboard[\dotfill]{3qr1k1/1p3pbn/p2p2p1/3P2Pp/5B1P/5Q2/PPPR4/1K4R1 b - - 0 1}
+\vspace{\fill}
+	
+\end{document}
+
+
